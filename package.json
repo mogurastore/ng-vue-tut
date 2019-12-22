@@ -2,6 +2,7 @@
   "name": "ng-vue-tut",
   "version": "0.0.0",
   "scripts": {
+    "dev": "ng serve --host 0 --port 8080",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
