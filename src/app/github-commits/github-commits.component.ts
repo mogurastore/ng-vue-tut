@@ -4,8 +4,6 @@ import { HttpClient } from "@angular/common/http";
 import { of } from "rxjs";
 import { startWith, switchMap } from "rxjs/operators";
 
-const apiURL = "https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=";
-
 @Component({
   selector: "app-github-commits",
   templateUrl: "./github-commits.component.html",
@@ -17,6 +15,9 @@ export class GithubCommitsComponent implements OnInit {
   commits = of([]);
 
   constructor(private http: HttpClient) {
+    const apiURL =
+      "https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=";
+
     this.commits = this.currentBranch.valueChanges.pipe(
       startWith(this.currentBranch.value),
       switchMap(branch => this.http.get<Object[]>(apiURL + branch))
